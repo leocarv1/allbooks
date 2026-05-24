@@ -53,24 +53,26 @@ class AuthorController {
     
     static async update(req, res, next) {
         try {
-            const { title } = req.body;
-            
-            if (!title) {
-                return res.status(400).json({ message: "title is required" });
+            const { firstName, lastName, birthday } = req.body;
+
+            if (!firstName && !lastName && !birthday) {
+                return res.status(400).json({ message: "At least one field is required (firstName, lastName, birthday)" });
             }
-            
-            const book = await Author.findOne({ where: { id: req.params.id } });
-            
-            if (!book) {
+
+            const author = await Author.findOne({ where: { id: req.params.id } });
+
+            if (!author) {
                 return res.status(404).json({ message: "Author not found" });
             }
-            
-            book.title = title;
-            await book.save();
-            
+
+            if (firstName) author.firstName = firstName;
+            if (lastName) author.lastName = lastName;
+            if (birthday) author.birthday = birthday;
+            await author.save();
+
             return res.status(200).json({
                 message: "Update successful",
-                data: book,
+                data: author,
             });
         } catch (err) {
             next(err)

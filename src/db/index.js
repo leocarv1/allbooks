@@ -20,6 +20,10 @@ export const connect = new Sequelize(
 Book.init(connect);
 Author.init(connect);
 
+const models = { Book, Author };
+Book.associate(models);
+Author.associate(models);
+
 export async function initDb() {
     try {
         await connect.authenticate();

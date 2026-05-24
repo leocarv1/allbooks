@@ -13,14 +13,6 @@ class Book extends Model {
         })
     };
 
-    static getID() {
-        return this.id;
-    };
-
-    static getTitle() {
-        return this.title;
-    }
-
     static associate(models) {
         this.belongsTo(models.Author, {
             foreignKey: "authorId",

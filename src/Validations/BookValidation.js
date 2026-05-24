@@ -5,8 +5,8 @@ class BookValidation {
         if (!payload.title) {
             return {valid: false, message: "title is required" };
 
-        } else if (!payload.authorID) {
-            return {valid: false, message: "authorID is required" };
+        } else if (!payload.authorId) {
+            return {valid: false, message: "authorId is required" };
 
         }
 

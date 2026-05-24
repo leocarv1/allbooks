@@ -9,7 +9,7 @@ class AuthorValidation {
             return {valid: false, message: "lastName is required" };
 
         } else if (!payload.birthday) {
-            return {valid: false, message: "lastName is required" };
+            return {valid: false, message: "birthday is required" };
 
         }
 

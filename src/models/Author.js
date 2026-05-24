@@ -27,14 +27,6 @@ class Author extends Model {
 		})
 	};
 	
-	static getID() {
-		return this.id;
-	};
-	
-	static getFirstName() {
-		return this.firstName;
-	};
-
 	static associate(models){
 		this.hasMany(models.Book, {
 			foreignKey: 'authorId',
